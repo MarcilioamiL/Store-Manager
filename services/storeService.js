@@ -12,7 +12,13 @@ const getById = async (id) => {
   return data;
 };
 
+const getPost = async (name) => {
+  const data = await storeModel.getPost(name);
+  return data;
+};
+
 module.exports = {
   getAll,
   getById,
+  getPost,
 };
