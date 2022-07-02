@@ -9,23 +9,23 @@ const getAll = async (req, res) => {
   }
 };
 
-const getById = async (req, res, next) => {
+const getById = async (req, res, _next) => {
   try {
     const { id } = req.params;
     const data = await storeService.getById(+id);
     return res.status(200).json(data);
   } catch (error) {
-    next(error);
+    return res.status(404).json({ message: error.message });
   }
 };
 
-const getPost = async (req, res, next) => {
+const getPost = async (req, res, _next) => {
   try {
     const { name } = req.body;
     const data = await storeService.getPost(name);
     res.status(201).json(data);
   } catch (error) {
-    next(error);
+    return res.status(404).send();
   }
 };
 
