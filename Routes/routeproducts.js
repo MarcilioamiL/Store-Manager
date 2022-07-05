@@ -10,5 +10,6 @@ router.get('/products', userController.getAll);
 router.get('/products/:id', userController.getById);
 router.post('/products', validateJoi, userController.getPost);
 router.delete('/products/:id', userController.remove);
+router.put('/products/:id', validateJoi, userController.getUpdate);
 
 module.exports = router;

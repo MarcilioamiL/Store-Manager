@@ -23,9 +23,18 @@ const remove = async (id) => {
   return removeId;
 };
 
+const getUpdate = async (id, name) => {
+  const data = await storeModel.getById(id);
+  const updateId = data.find((datas) => datas.id === +(id));
+  if (!updateId) throw new Error('Product not found');
+  await storeModel.getUpdate(name, id);
+  return { id, name };
+};
+
 module.exports = {
   getAll,
   getById,
   getPost,
   remove,
+  getUpdate,
 };

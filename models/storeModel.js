@@ -27,9 +27,16 @@ const remove = async (id) => {
   return data;
 };
 
+const getUpdate = async (id, name) => {
+  const query = 'UPDATE StoreManager.products SET name=? WHERE id=?;';
+  const [data] = await connections.execute(query, [id, name]);
+  return data;
+};
+
 module.exports = {
   getAll,
   getById,
   getPost,
   remove,
+  getUpdate,
 };
