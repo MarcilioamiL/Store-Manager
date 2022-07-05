@@ -29,8 +29,19 @@ const getPost = async (req, res, _next) => {
   }
 };
 
+const remove = async (req, res, _next) => {
+  try {
+    const { id } = req.params;
+    const data = await storeService.remove(id);
+    res.status(204).json(data);
+  } catch (error) {
+    return res.status(404).json({ message: error.message });
+  }
+};
+
 module.exports = {
   getAll,
   getById,
   getPost,
+  remove,
 };

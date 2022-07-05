@@ -7,7 +7,6 @@ const getAll = async () => {
 
 const getById = async (id) => {
   const [data] = await storeModel.getById(id);
-  console.log(data);
   if (!data) throw new Error('Product not found');
   return data;
 };
@@ -17,8 +16,16 @@ const getPost = async (name) => {
   return data;
 };
 
+const remove = async (id) => {
+  const [data] = await storeModel.getById(id);
+  if (!data) throw new Error('Product not found');
+  const removeId = storeModel.remove(id);
+  return removeId;
+};
+
 module.exports = {
   getAll,
   getById,
   getPost,
+  remove,
 };

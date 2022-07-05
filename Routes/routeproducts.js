@@ -9,5 +9,6 @@ const userController = require('../controllers/storeController');
 router.get('/products', userController.getAll);
 router.get('/products/:id', userController.getById);
 router.post('/products', validateJoi, userController.getPost);
+router.delete('/products/:id', userController.remove);
 
 module.exports = router;
